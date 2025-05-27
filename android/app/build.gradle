@@ -1,0 +1,74 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    //id("com.google.gms.google-services")
+    //id 'com.google.firebase.crashlytics'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace = "com.TradeWithExperts"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.TradeWithExperts"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+        signingConfigs {
+    release {
+        storeFile file("../temp-release-key.jks")
+        storePassword "temp123"
+        keyAlias "temp"
+        keyPassword "temp123"
+    }
+}
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.release
+        }
+    }
+    dependencies {
+        //implementation 'com.razorpay:checkout:1.6.4' // Make sure to use the latest version of Razorpay
+        //implementation 'com.google.android.gms:play-services-wallet:18.1.3' // If using Google Pay
+        // Example to include OkHttp, replace with specific versions as needed
+        //implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+        // If gRPC is being used
+        //implementation 'io.grpc:grpc-okhttp:1.32.2'
+    }
+
+}
+
+flutter {
+    source = "../.."
+}

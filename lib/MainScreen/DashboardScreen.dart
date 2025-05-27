@@ -12,7 +12,7 @@ import 'Daily_Performance.dart';
 import 'Training_Material.dart';
 import 'Training_Session.dart';
 import 'Watch_Videos.dart';
-import 'Charts_pattern.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -21,6 +21,21 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen>
     with SingleTickerProviderStateMixin {
+
+  void callAdmin(String phoneNumber) async {
+    final Uri callUri = Uri(scheme: 'tel', path: phoneNumber);
+    print('Attempting to call $phoneNumber');
+
+    if (await canLaunchUrl(callUri)) {
+      print('Launching $callUri');
+      await launchUrl(callUri);
+    } else {
+      print('Could not launch $callUri');
+      throw 'Could not launch $callUri';
+    }
+  }
+
+
   AppUpdateInfo? _updateInfo;
   bool hasValidSubscription = false;
   bool isLoading = true;
@@ -383,17 +398,17 @@ class _DashboardScreenState extends State<DashboardScreen>
         },
         isLocked: !hasValidSubscription,
       ),
-      _createDashboardItem(
-        title: 'Chart\nPatterns',
-        icon: Icons.auto_graph_rounded,
-        color: Colors.amber.shade600,
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CandlesPattern()),
-          );
-        },
-      ),
+      // _createDashboardItem(
+      //   title: 'Chart\nPatterns',
+      //   icon: Icons.auto_graph_rounded,
+      //   color: Colors.amber.shade600,
+      //   onTap: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => CandlesPattern()),
+      //     );
+      //   },
+      // ),
       _createDashboardItem(
         title: 'Training\nMaterial',
         icon: Icons.menu_book_rounded,
@@ -427,6 +442,14 @@ class _DashboardScreenState extends State<DashboardScreen>
           );
         },
       ),
+      _createDashboardItem(
+        title: 'Contact Us:',
+        icon: Icons.phone,
+        color: Colors.green,
+        onTap: () => callAdmin('8309569385'), // Initiates a call directly
+      ),
+
+
     ];
 
     return SliverPadding(

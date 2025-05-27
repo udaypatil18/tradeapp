@@ -7,6 +7,7 @@ plugins {
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    id("com.google.gms.google-services")
 }
 
 def keystoreProperties = new Properties()
@@ -65,6 +66,8 @@ android {
         //implementation 'com.squareup.okhttp3:okhttp:4.9.0'
         // If gRPC is being used
         //implementation 'io.grpc:grpc-okhttp:1.32.2'
+        implementation(platform("com.google.firebase:firebase-bom:33.14.0"))
+        implementation("com.google.firebase:firebase-analytics")
     }
 
 }

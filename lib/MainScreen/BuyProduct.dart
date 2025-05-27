@@ -12,8 +12,8 @@ class BuyProduct extends StatefulWidget {
 class _BuyProductState extends State<BuyProduct> {
   final List<Map<String, dynamic>> plans = [
     {
-      "title": "2-Months Plan",
-      "price": "₹ 2999",
+      "title": "1-Months Plan",
+      "price": "₹ 3000",
       "desc": "Perfect!",
       "features": [
         "Basic Trading Insights",
@@ -23,8 +23,8 @@ class _BuyProductState extends State<BuyProduct> {
       "recommended": false
     },
     {
-      "title": "6-Months Plan",
-      "price": "₹ 4999",
+      "title": "3-Months Plan",
+      "price": "₹ 8000",
       "desc": "Best value!",
       "features": [
         "Advanced Trading Tools",
@@ -35,8 +35,8 @@ class _BuyProductState extends State<BuyProduct> {
       "recommended": true
     },
     {
-      "title": "1-Year Plan",
-      "price": "₹ 7999",
+      "title": "6-Months Plan",
+      "price": "₹ 14000",
       "desc": "Most popular plan!",
       "features": [
         "Premium Trading Insights",
@@ -48,7 +48,8 @@ class _BuyProductState extends State<BuyProduct> {
       "recommended": false
     },
     {
-      "title": "Lifetime Plan",
+      "title": "1-Year Plan"
+          "",
       "price": "₹ 14999",
       "desc": "Unlimited access!",
       "features": [

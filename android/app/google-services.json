@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100010021548",
+    "project_id": "tradeapp-93b37",
+    "storage_bucket": "tradeapp-93b37.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100010021548:android:37c57b41363ebb808cc509",
+        "android_client_info": {
+          "package_name": "com.TradeWithExperts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwHpEoFlo3r3LIZcaf1-QxsmKfWq5llG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

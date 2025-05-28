@@ -108,6 +108,91 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
   */
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+
+  // Function to hash the password
+  String hashPassword(String password) {
+    return sha256.convert(utf8.encode(password)).toString();
+  }
+
+  // Function to handle login request
+  Future<void> _login() async {
+    // Dismiss the keyboard
+    FocusScope.of(context).unfocus();
+
+    final String email = emailController.text.trim();
+    final String password = passwordController.text.trim();
+
+    // Hash the entered password
+    final String hashedPassword = hashPassword(password);
+
+    setState(() {
+      isLoading = true; // Show loading animation
+    });
+
+    try {
+      // Query Firestore for user with matching email
+      final userRef = FirebaseFirestore.instance.collection('User');
+      final userSnapshot = await userRef.where('email', isEqualTo: email).get();
+
+      if (userSnapshot.docs.isNotEmpty) {
+        final userDoc = userSnapshot.docs.first.data();
+        final String username = userDoc['username'];
+
+        if (userDoc['password'] == hashedPassword) {
+          // Store username and email in SharedPreferences
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setBool('isLoggedIn', true);
+          await prefs.setString('username', username);
+          await prefs.setString('email', email);
+
+          // Navigate to DashboardScreen with username and email
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  DashboardScreen(),
+            ),
+          );
+        } else {
+          // Show error message for invalid credentials
+          CherryToast.error(
+            title: const Text('Error'),
+            displayIcon: true,
+            description: const Text(
+                'Invalid email or password. Please try again.'),
+            animationType: AnimationType.fromTop,
+            autoDismiss: true,
+          ).show(context);
+        }
+      } else {
+        // Show error message for user not found
+        CherryToast.error(
+          title: const Text('Error'),
+          displayIcon: true,
+          description: const Text(
+              'No account found with this email. Please register first.'),
+          animationType: AnimationType.fromTop,
+          autoDismiss: true,
+        ).show(context);
+      }
+    } catch (e) {
+      // Show error message for unexpected errors
+      CherryToast.error(
+        title: const Text('Error'),
+        displayIcon: true,
+        description: Text('An error occurred: ${e.toString()}'),
+        animationType: AnimationType.fromTop,
+        autoDismiss: true,
+      ).show(context);
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,10 +264,9 @@ class _LoginPageState extends State<LoginPage> {
 
                         // Mobile field
                         CustomTextField(
-                          label: 'Mobile (10 digits)',
+                          label: 'Email',
                           obscureText: false,
-                          inputType: TextInputType.number,
-                          maxLength: 10,
+                          inputType: TextInputType.emailAddress,
                         ),
                         const SizedBox(height: 20),
 
@@ -235,7 +319,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  const Color.fromARGB(255, 33, 144, 235),
+                              const Color.fromARGB(255, 33, 144, 235),
                               padding: const EdgeInsets.symmetric(vertical: 15),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -263,7 +347,7 @@ class _LoginPageState extends State<LoginPage> {
                                 MaterialPageRoute(
                                   builder: (context) => RegistrationScreen(),
                                 ),
-                                (route) => false,
+                                    (route) => false,
                               );
                             },
                             child: RichText(

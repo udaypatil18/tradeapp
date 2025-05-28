@@ -66,6 +66,7 @@ dependencies:
   flutter_spinkit: ^5.1.0 # for loading animation (optional)
 
 
+
   
 
 dev_dependencies:
@@ -103,6 +104,7 @@ flutter:
      - assets/BasicImage/Men_Trading.png
      - assets/chart2.jpg
      - assets/chart3.jpg
+     - assets/google_logo.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

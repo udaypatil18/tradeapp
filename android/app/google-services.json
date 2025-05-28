@@ -12,7 +12,20 @@
           "package_name": "com.TradeWithExperts"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "100010021548-f368t12r8h6e3o5bat6av5d1e750ft9j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.TradeWithExperts",
+            "certificate_hash": "1fdc06fb060e7845aaaecf4489e45254ca1153b7"
+          }
+        },
+        {
+          "client_id": "100010021548-lht6c1c5ist3fs9tafh4cdikl2n2u3mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAwHpEoFlo3r3LIZcaf1-QxsmKfWq5llG8"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100010021548-lht6c1c5ist3fs9tafh4cdikl2n2u3mm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

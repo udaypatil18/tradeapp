@@ -68,6 +68,7 @@ android {
         //implementation 'io.grpc:grpc-okhttp:1.32.2'
         implementation(platform("com.google.firebase:firebase-bom:33.14.0"))
         implementation("com.google.firebase:firebase-analytics")
+        implementation ('com.google.android.gms:play-services-auth:20.7.0')
     }
 
 }

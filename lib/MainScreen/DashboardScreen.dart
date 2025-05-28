@@ -14,6 +14,9 @@ import 'Training_Session.dart';
 import 'Watch_Videos.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'chatbotscreen.dart';
+
+
 class DashboardScreen extends StatefulWidget {
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
@@ -99,35 +102,46 @@ class _DashboardScreenState extends State<DashboardScreen>
       backgroundColor: backgroundColor,
       body: isLoading
           ? Center(
-              child: CircularProgressIndicator(
-                color: primaryColor,
-              ),
-            )
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      )
           : FadeTransition(
-              opacity: _fadeAnimation,
-              child: CustomScrollView(
-                slivers: [
-                  _buildAppBar(),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildHeader(),
-                          if (!hasValidSubscription) _buildSubscriptionBanner(),
-                          const SizedBox(height: 20),
-                        ],
-                      ),
-                    ),
-                  ),
-                  _buildGridView(),
-                ],
+        opacity: _fadeAnimation,
+        child: CustomScrollView(
+          slivers: [
+            _buildAppBar(),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildHeader(),
+                    if (!hasValidSubscription) _buildSubscriptionBanner(),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
+            _buildGridView(),
+          ],
+        ),
+      ),
+      // Add the Floating Action Button for the chatbot
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigate to the Chatbot Screen
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatBotScreen()),
+          );
+        },
+        backgroundColor: primaryColor,
+        child: const Icon(Icons.chat_bubble_outline, color: Colors.white),
+      ),
     );
   }
-
   Widget _buildAppBar() {
     return SliverAppBar(
       expandedHeight: 137,
@@ -322,7 +336,6 @@ class _DashboardScreenState extends State<DashboardScreen>
       ),
     );
   }
-
   Widget _buildGridView() {
     final dashboardItems = [
       _createDashboardItem(
@@ -448,6 +461,8 @@ class _DashboardScreenState extends State<DashboardScreen>
         color: Colors.green,
         onTap: () => callAdmin('8309569385'), // Initiates a call directly
       ),
+
+
 
 
     ];
@@ -755,6 +770,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     );
   }
 }
+
 
 class DashboardItem {
   final String title;

@@ -13,7 +13,7 @@ class _BuyProductState extends State<BuyProduct> {
   final List<Map<String, dynamic>> plans = [
     {
       "title": "1-Months Plan",
-      "price": "₹ 3000",
+      "price": "₹ 2999+gst",
       "desc": "Perfect!",
       "features": [
         "Basic Trading Insights",
@@ -24,7 +24,7 @@ class _BuyProductState extends State<BuyProduct> {
     },
     {
       "title": "3-Months Plan",
-      "price": "₹ 8000",
+      "price": "₹ 7999+gst",
       "desc": "Best value!",
       "features": [
         "Advanced Trading Tools",
@@ -36,7 +36,7 @@ class _BuyProductState extends State<BuyProduct> {
     },
     {
       "title": "6-Months Plan",
-      "price": "₹ 14000",
+      "price": "₹ 14999+gst",
       "desc": "Most popular plan!",
       "features": [
         "Premium Trading Insights",
@@ -50,7 +50,7 @@ class _BuyProductState extends State<BuyProduct> {
     {
       "title": "1-Year Plan"
           "",
-      "price": "₹ 14999",
+      "price": "₹ 24999+gst",
       "desc": "Unlimited access!",
       "features": [
         "Unlimited Trading Tools",

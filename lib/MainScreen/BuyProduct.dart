@@ -56,6 +56,7 @@ class _BuyProductState extends State<BuyProduct> {
         "Unlimited Trading Tools",
         "Complete Market Analysis",
         "Lifetime Premium Support",
+
         "Exclusive Webinars",
         "Personal Trading Strategist"
       ],

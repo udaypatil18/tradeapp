@@ -4,7 +4,7 @@ import 'package:in_app_update/in_app_update.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../ReusableWidget/Profile_dialog.dart';
-import 'About_TradeWithExpertsIndicator.dart';
+
 import 'BuyProduct.dart';
 import 'FAQ.dart';
 import 'HelpDesk.dart';
@@ -360,17 +360,17 @@ class _DashboardScreenState extends State<DashboardScreen>
           );
         },
       ),
-      _createDashboardItem(
-        title: 'About TwE\nIndicator',
-        icon: Icons.info_outline_rounded,
-        color: Colors.orangeAccent,
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AboutIndicator()),
-          );
-        },
-      ),
+      // _createDashboardItem(
+      //   title: 'About TwE\nIndicator',
+      //   icon: Icons.info_outline_rounded,
+      //   color: Colors.orangeAccent,
+      //   onTap: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => AboutIndicator()),
+      //     );
+      //   },
+      // ),
       _createDashboardItem(
         title: 'Watch\nVideos',
         icon: Icons.play_circle_fill_rounded,

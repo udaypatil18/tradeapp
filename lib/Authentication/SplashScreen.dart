@@ -140,8 +140,8 @@ class _SplashScreenState extends State<SplashScreen>
               offset: Offset(0, _bounceAnimation.value),
               child: Image.asset(
                 'assets/Splashlogo_twe.jpeg', // Replace with your image path
-                width: 150,
-                height: 150,
+                width: 300,
+                height: 200,
               ),
             );
           },

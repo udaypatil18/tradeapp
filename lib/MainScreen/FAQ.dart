@@ -24,7 +24,7 @@ class _FaqState extends State<Faq> {
     },
     {
       "question": "Is a trial available?",
-      "answer": "Yes, we offer a 7-day free trial."
+      "answer": "Yes, we offer a 3-day free trial."
     },
     {
       "question": "Does it work in all markets?",
